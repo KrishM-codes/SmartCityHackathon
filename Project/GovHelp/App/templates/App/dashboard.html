@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Welcome, {{data.first_name}}!!
+    <br>
+    PROFILE:
+    <br>
+    Username: {{data.username}}<br>
+    First name: {{data.first_name}}<br>
+    Last name: {{data.last_name}}<br>
+    <br>
+    <br>
+    <a href="{% url 'queries' %}">All Queries</a>
+    <br>
+
+    <form action="" method="post">
+        {% csrf_token%}
+        <input type="submit" value="Logout" name="logout"> 
+    </form>
+</body>
+</html>
