@@ -13,6 +13,6 @@ urlpatterns = [
     path('register', view=views.registerUser,name = 'register'),
     path('login', view=views.loginUser,name = 'login'),
     path('dashboard',view=views.dashboard,name='dashboard'),
-    path('postquery',view=views.postQuery,name='postquery'),
+    path('getquery/<int:uid>',view=views.GetQuery.as_view(),name='getquery'),
     path('gettoken',CustomAuthToken.as_view()),
 ]
