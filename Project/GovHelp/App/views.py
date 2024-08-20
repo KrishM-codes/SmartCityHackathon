@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .serializers import QuerySerializer,UserSerializer
+from .serializers import QuerySerializer,UserSerializer,QuerygetSerializer
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse
 from rest_framework.parsers import JSONParser
@@ -31,10 +31,21 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
 
+class GetQuery(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, uid=None, format=None):
+        if uid is not None:
+            queries = Query.objects.filter(Posted_by_id=uid)
+            serializer = QuerygetSerializer(queries,many=True)
+            return Response(serializer.data)
+
+
 
 # @api_view(['POST','GET','PUT','DELETE'])
 class QueryAPI(APIView):
-    # authentication_classes = [TokenAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self,request,pk=None,format=None):
@@ -171,64 +182,3 @@ def registerUser(request):
      
     # Render the registration page template (GET request)
     return render(request, 'App/register.html')
-
-# @csrf_exempt
-# def queries(request):
-#     if request.method=='GET':
-#         json_data = request.body
-#         stream = io.BytesIO(json_data)
-#         pydata = JSONParser().parse(stream)
-#         uname = pydata.get('uname',None)
-
-#         if uname is not None:
-#             uid = User.objects.get(username=uname)
-#             queries = Query.objects.filter(Posted_by_id=uid.id)
-#         else:
-#             queries = Query.objects.all()
-    
-#         serializer = QuerySerializer(queries, many=True)
-#         json_data = JSONRenderer().render(serializer.data)
-#         return HttpResponse(json_data,content_type = 'application/json')
-
-#     if request.method == 'POST':
-#         json_data = request.body
-#         stream = io.BytesIO(json_data)
-#         pydata = JSONParser().parse(stream)
-#         uname = pydata.get('Posted_by')
-#         uid = User.objects.get(username = uname).id
-#         pydata['Posted_by']=uid
-#         serializer = QuerySerializer(data=pydata)
-#         if serializer.is_valid():
-#             serializer.save()
-#             res = {'msg':'Query Posted'}
-#             json_data = JSONRenderer().render(res)
-#             return HttpResponse(json_data,content_type='application/json')
-        
-#         json_data = JSONRenderer().render(serializer.errors)
-#         return HttpResponse(json_data,content_type='application/json')
-    
-#     if request.method == 'PUT':
-#         json_data = request.body
-#         stream = io.BytesIO(json_data)
-#         pydata = JSONParser().parse(stream)
-#         id = pydata.get('id')
-#         query = Query.objects.get(id=id)
-#         serializer=QuerySerializer(query,data=pydata,partial=True)
-#         if serializer.is_valid():
-#             serializer.save()
-#             res = {'msg':'Query Updated!'}
-#             json_data = JSONRenderer().render(res)
-#             return HttpResponse(json_data,content_type='application/json')
-#         json_data = JSONRenderer().render(res)
-#         return HttpResponse(json_data,content_type='application/json')
-        
-#     if request.method == 'DELETE':
-#         json_data = request.body
-#         stream = io.BytesIO(json_data)
-#         pydata = JSONParser().parse(stream)
-#         id = pydata.get('id')
-#         query = Query.objects.get(id=id)
-#         query.delete()
-#         res = {'msg':'Query Deleted!'}
-#         json_data = JSONRenderer().render(res)
-#         return HttpResponse(json_data,content_type='application/json')
