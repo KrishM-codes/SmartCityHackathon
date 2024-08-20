@@ -1,0 +1,21 @@
+{
+    'username':forminput,
+    'password':forminput
+}
+
+Resp
+{
+    statuscode = OK(200),/
+}
+
+token{
+    header: 'username':'','password':''
+
+}
+
+return{
+    'Token':asefqwtt5q
+    'userid':1
+    'username':''
+}
+

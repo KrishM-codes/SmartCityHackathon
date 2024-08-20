@@ -1,0 +1,113 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": ["Hi", "Hello", "Hey", "Good day", "Is anyone there?", "Greetings"],
+        "responses": ["Hello! How can I assist you today?", "Hi there! How may I help?", "Greetings! How can I support you?"],
+        "context": [""]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": ["Goodbye", "Bye", "See you later", "Thanks, bye", "Catch you later"],
+        "responses": ["Goodbye! Feel free to reach out if you need anything.", "Take care! We're here if you need more help.", "Bye! Don't hesitate to contact us again."],
+        "context": [""]
+      },
+      {
+        "tag": "thanks",
+        "patterns": ["Thank you", "Thanks", "I appreciate it", "Much appreciated", "Thanks for your help"],
+        "responses": ["You're welcome! We're happy to help.", "Glad to be of assistance!", "You're welcome! Feel free to ask if you have more questions."],
+        "context": [""]
+      },
+      {
+        "tag": "status_update",
+        "patterns": ["status_update","What is the status of my report?", "Can I check my complaint status?", "Has my issue been resolved?", "Is there any update on my feedback?"],
+        "responses": ["Let me check the status of your report. Can you provide the report number?", "Please share your complaint ID, and we'll update you on the progress.", "I'll check the current status of your issue. Could you provide complaint ID?"],
+        "context": [""]
+      },
+      {
+        "tag": "complaint",
+        "patterns": ["complaint","I want to file a complaint", "I have a complaint", "There is something wrong", "I need to submit a complaint"],
+        "responses": ["Give the title for the complaint", "We're here to help. Please share the complaint title", "Let us know what the complaint is about, and we'll take action."],
+        "context": [""]
+      },
+      {
+        "tag": "delete_query",
+        "patterns": [
+          "delete_query",
+          "I want to delete my query",
+          "Can I remove my query?",
+          "I'd like to cancel my report",
+          "How can I delete my query?",
+          "I need to delete my query"
+        ],
+        "responses": [
+          "Please provide your query ID to delete it.",
+          "I can help with that. What is your query ID?",
+          "Sure, please give me your query ID to proceed with deletion."]
+      },
+      {
+        "tag": "update_query",
+        "patterns": [
+          "update_query",
+          "I want to update my query",
+          "Can I edit my query?",
+          "I'd like to modify my report",
+          "How can I update my query?",
+          "I need to change the details of my query"
+        ],
+        "responses": [
+          "Sure, please provide your query ID",
+          "I can help you update your query. What is your query ID and what changes would you like to make?",
+          "Please give me your query ID and the updated information."
+        ]
+      },
+      {
+        "tag": "query_details",
+        "patterns": [
+          "query_details",
+          "Can you provide the details of my query?",
+          "I want to see the details of my query",
+          "Show me the information of my query",
+          "I'd like to check the details of my query",
+          "What are the details of my report?"
+        ],
+        "responses": [
+          "Sure, please provide your query ID to fetch the details.",
+          "I can help with that. What is your query ID?",
+          "Please give me your query ID so I can show you the details."
+        ]
+      },
+      {
+        "tag": "fallback",
+        "patterns": [],
+        "responses": [
+          "I'm sorry, I didn't understand that. Could you please rephrase?",
+          "I'm not sure I understand. Could you clarify?",
+          "Could you please provide more details?"
+        ]
+      },
+      {
+        "tag": "query_details",
+        "patterns": [
+          "query_details",
+          "Can you provide the details of my query?",
+          "I want to see the details of my query",
+          "Show me the information of my query",
+          "I'd like to check the details of my query",
+          "What are the details of my report?"
+        ],
+        "responses": [
+          "Sure, please provide your query ID to fetch the details.",
+          "I can help with that. What is your query ID?",
+          "Please give me your query ID so I can show you the details."
+        ]
+      },
+      {
+        "tag": "post_query",
+        "patterns": ["post_query","I want to post a query", "I have a query", "How do I file a query?", "Can I submit a query?", "I need to report an issue"],
+        "responses": ["Sure, I'd be happy to help with that. Please provide the title of your query.", "Certainly! What would you like to title your query?", "I'm here to assist. Can you please tell me the title of your query?"],
+        "context": [""]
+      }
+    ]
+  }
+  
